@@ -43,11 +43,9 @@ while(! feof($fileCompareFrom)) {
 
 // Creating Output CSV File (i.e. data-c.csv)
 $finalCSV = "data-c.csv";
-if(file_exists($finalCSV))unlink($finalCSV); 	// Deleting already existed data-c.csv
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename='.$finalCSV);
 $finalCSVOpened = fopen('php://output',"w");
-chmod($finalCSV, 0777); 	// Setting read write permission to the file
 foreach ($finalCSVArray as $line) {
 	fputcsv($finalCSVOpened,$line);
 }
